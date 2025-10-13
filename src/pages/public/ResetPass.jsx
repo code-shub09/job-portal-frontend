@@ -1,7 +1,8 @@
 import axios from "axios";
+import { ChevronsRightLeft } from "lucide-react";
 import React from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ResetPass = () => {
   const { token } = useParams();
@@ -9,6 +10,7 @@ const ResetPass = () => {
   const [confirmPassword, setConfirmPassword] = useState();
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const naviagate=useNavigate();
 
   async function submitHandler(e) {
      e.preventDefault();
@@ -20,7 +22,7 @@ const ResetPass = () => {
     if (password !== confirmPassword) return setError("Passwords do not match");
 
     try {
-      axios.post(
+      await axios.post(
         `http://localhost:4300/auth/reset-password/${token}`,
         {
           password,
@@ -31,7 +33,9 @@ const ResetPass = () => {
       );
 
       setSuccess("Password reset successfully! Redirecting to login...");
+      naviagate('/');
     } catch (error) {
+        
 
     }
   }
@@ -89,12 +93,12 @@ const ResetPass = () => {
 
         <p className="text-center text-sm text-gray-600 mt-6">
           Remembered your password?{" "}
-          <a
-            href="/#/login"
+          <Link
+            to="/"
             className="text-blue-600 font-semibold hover:underline"
           >
             Go to Login
-          </a>
+          </Link>
         </p>
       </div>
     </div>
