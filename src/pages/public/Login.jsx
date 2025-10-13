@@ -3,6 +3,7 @@ import { Eye, EyeOff } from "lucide-react"; // optional icon library
 import { useRef } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import jobZillaLogo from "../../assets/logo2.png";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -29,6 +30,10 @@ export default function Login() {
   }
 
   return (
+     <>
+     <div className="w-full bg-blue-500 p-2">
+            <img src={jobZillaLogo}  className="h-[80px]" alt="" />
+        </div>
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
       <div className="bg-white w-full max-w-sm rounded-2xl shadow-xl p-8">
         {/* Header */}
@@ -118,5 +123,7 @@ export default function Login() {
         </button>
       </div>
     </div>
+     
+     </>
   );
 }

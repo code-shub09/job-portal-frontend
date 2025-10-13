@@ -35,7 +35,10 @@ const ResetPass = () => {
       );
 
       setSuccess("Password reset successfully! Redirecting to login...");
-      naviagate('/');
+      setTimeout(()=>{
+        naviagate('/');
+      },1500);
+      
     } catch (error) {
         
 
