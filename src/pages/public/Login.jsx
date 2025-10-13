@@ -38,7 +38,7 @@ export default function Login() {
             href="/register"
             className="text-blue-600 text-sm font-medium hover:underline"
           >
-            Register for free
+            shubham for free
           </a>
         </div>
 
