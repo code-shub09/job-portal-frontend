@@ -20,7 +20,7 @@ function App() {
           <Route path='/' element={<PublicLayout></PublicLayout>}></Route>
           <Route path='/reset-password/:token' element={<ResetPass></ResetPass>} ></Route>
            <Route path='/forgotPassword' element={<ForgotPass1></ForgotPass1>} ></Route>
-          <Route path='/dashboard' ></Route>
+          <Route path='/dashboard'></Route>
           
         </Routes>
      
