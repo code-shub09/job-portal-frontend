@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-     <BrowserRouter>
+     <HashRouter>
         <Routes>
           <Route path='/' element={<PublicLayout></PublicLayout>}></Route>
           <Route path='/reset-password/:token' element={<ResetPass></ResetPass>} ></Route>
@@ -24,7 +24,7 @@ function App() {
           
         </Routes>
      
-     </BrowserRouter>
+     </HashRouter>
     </>
   )
 }
