@@ -2,7 +2,9 @@ import axios from "axios";
 import { ChevronsRightLeft } from "lucide-react";
 import React from "react";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import jobZillaLogo from "../../assets/logo2.png";
+import { useNavigate, useParams,Link } from "react-router-dom";
+
 
 const ResetPass = () => {
   const { token } = useParams();
@@ -40,7 +42,11 @@ const ResetPass = () => {
     }
   }
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <>
+    <div className="w-full bg-blue-500 p-4">
+        <img src={jobZillaLogo}  className="h-[40px]" alt="" />
+    </div>
+     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-md bg-white shadow-lg rounded-xl p-8 border border-gray-100">
         <h2 className="text-2xl font-bold text-center text-gray-900 mb-6">
           Reset your password
@@ -102,6 +108,8 @@ const ResetPass = () => {
         </p>
       </div>
     </div>
+    
+    </>
   );
 };
 
