@@ -43,8 +43,8 @@ const ResetPass = () => {
   }
   return (
     <>
-    <div className="w-full bg-blue-500 p-4">
-        <img src={jobZillaLogo}  className="h-[40px]" alt="" />
+    <div className="w-full bg-blue-500 p-2">
+        <img src={jobZillaLogo}  className="h-[80px]" alt="" />
     </div>
      <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-md bg-white shadow-lg rounded-xl p-8 border border-gray-100">
