@@ -19,7 +19,7 @@ export default function Login() {
     };
     console.log('form data :', formData);
     try {
-         const response= await axios.post('http://localhost:4300/auth/login',formData,{withCredentials:true,headers:{"Content-Type":"application/json"}});
+         const response= await axios.post('https://job-portal-server-lr93.onrender.com/auth/login',formData,{withCredentials:true,headers:{"Content-Type":"application/json"}});
          navigate('/dashboard');
     } catch (error) {
 

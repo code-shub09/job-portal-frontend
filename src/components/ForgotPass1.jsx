@@ -23,7 +23,7 @@ export default function ForgotPass1() {
     };
     try {
       const res = await axios.post(
-        "http://localhost:4300/auth/forget-password",
+        "https://job-portal-server-lr93.onrender.com/auth/forget-password",
         data,
         {
           withCredentials: true,

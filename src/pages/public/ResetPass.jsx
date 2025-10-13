@@ -25,7 +25,7 @@ const ResetPass = () => {
 
     try {
       await axios.post(
-        `http://localhost:4300/auth/reset-password/${token}`,
+        `https://job-portal-server-lr93.onrender.com/auth/reset-password/${token}`,
         {
           password,
         },
