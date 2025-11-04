@@ -120,10 +120,16 @@ const Profile = () => {
   }
   useEffect(()=>{
     async function ProfileFetch(params) {
-      const response = await axios.get(
-          `https://job-portal-server-lr93.onrender.com/jobseekar/job-search/profile`,
+      try {
+        const response = await axios.get(
+          `https://job-portal-server-lr93.onrender.com/jobseekar/profile`,
           { withCredentials:true,headers: { "Content-Type": "application/json" } }
         );
+
+       console.log(response);
+      } catch (error) {
+        
+      }
     }
 
   },[])
