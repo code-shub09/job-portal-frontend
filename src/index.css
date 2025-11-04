@@ -1,1 +1,70 @@
 @import "tailwindcss";
+
+
+/* index.css */
+
+.job-description h1 {
+  font-size: 1.75rem; /* text-2xl */
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #1e293b; /* slate-800 */
+}
+
+.job-description h2 {
+  font-size: 1.5rem; /* text-xl */
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+}
+
+.job-description h3 {
+  font-size: 1.25rem; /* text-lg */
+  font-weight: 600;
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+  color: #334155;
+}
+
+.job-description p {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.job-description ul,
+.job-description ol {
+  margin-left: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.job-description li {
+  margin-bottom: 0.25rem;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.contact-container>div {
+  padding: 0.5rem;
+
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* All input elements inside .contact-container */
+.contact-container input, select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  background-color: rgba(244, 243, 243, 0.911);
+  border-radius: 8px;
+}

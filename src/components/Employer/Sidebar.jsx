@@ -40,12 +40,12 @@ const Sidebar = () => {
     { name: "Packages", icon: <Package size={18} />, path: "/packages" },
     { name: "Messages", icon: <Mail size={18} />, path: "/messages", badge: 5 },
     { name: "Resume Alerts", icon: <Bell size={18} />, path: "/alerts" },
-    { name: "Delete Profile", icon: <Trash2 size={18} />, path: "/delete-profile" },
+
     { name: "Logout", icon: <LogOut size={18} />, path: "/logout" },
   ];
 
   return (
-    <aside className="w-64 min-h-screen bg-blue-50 text-gray-800 flex flex-col border-r border-gray-200 relative">
+    <aside className="w-full min-h-screen bg-blue-50 text-gray-800 flex flex-col border-r border-gray-200 relative">
       {/* ✅ Logo */}
       
 

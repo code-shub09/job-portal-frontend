@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import SkillsInput2 from "../../components/Employer/SkillsInput2";
+import RichTextEditor from "../../components/Employer/ReactTextEditor";
 
 const Jobpost = () => {
   const [formData, setFormData] = useState({
@@ -12,7 +14,8 @@ const Jobpost = () => {
     description: "",
     requirements: "",
     qualification: "",
-    industryType: "",
+    minExperience: "",
+    skillsRequired:[]
   });
 
   const [loading, setLoading] = useState(false);
@@ -22,30 +25,35 @@ const Jobpost = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+ 
+
   const handleSubmit = async (e) => {
+    console.log('hello')
     e.preventDefault();
     setLoading(true);
     setMessage("");
+    // console.log('form',formData);
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/employer/post-job`,
+        'https://job-portal-server-lr93.onrender.com/post-job',
         formData,
-        { withCredentials: true }
+        { withCredentials:true,headers:{"Content-Type":"application/json"} }
       );
+      console.log(response);
       setMessage("✅ Job posted successfully!");
-      setFormData({
-        title: "",
-        department: "",
-        jobType: "",
-        location: "",
-        salaryMin: "",
-        salaryMax: "",
-        description: "",
-        requirements: "",
-        qualification: "",
-        industryType: "",
-      });
+      // setFormData({
+      //   title: "",
+      //   department: "",
+      //   jobType: "",
+      //   location: "",
+      //   salaryMin: "",
+      //   salaryMax: "",
+      //   description: "",
+      //   requirements: "",
+      //   qualification: "",
+      //   minExperience: "",
+      // });
     } catch (error) {
       setMessage(error.response?.data?.message || "Something went wrong!");
     } finally {
@@ -110,11 +118,11 @@ const Jobpost = () => {
                 className="w-full border rounded-md p-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none"
               >
                 <option value="">Select type</option>
-                <option>Full-Time</option>
-                <option>Part-Time</option>
-                <option>Internship</option>
-                <option>Contract</option>
-                <option>Remote</option>
+                <option value='full-time'>Full-Time</option>
+                <option value='part-time'>Part-Time</option>
+                <option value='internship'>Internship</option>
+                <option value='contract'>Contract</option>
+                <option value='remote'>Remote</option>
               </select>
             </div>
           </div>
@@ -184,22 +192,21 @@ const Jobpost = () => {
 
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">
-                Industry Type
+                Experience
               </label>
               <select
-                name="industryType"
-                value={formData.industryType}
+                name="minExperience"
+                value={formData.minExperience}
                 onChange={handleChange}
                 className="w-full border rounded-md p-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none"
               >
-                <option value="">Select industry</option>
-                <option>Information Technology</option>
-                <option>Finance & Banking</option>
-                <option>Healthcare</option>
-                <option>Education</option>
-                <option>E-commerce</option>
-                <option>Hospitality</option>
-                <option>Manufacturing</option>
+                <option value="">Select Years</option>
+                {[...Array(16)].map((_, i) => (
+                  <option key={i} value={i}>
+                    {i} {i === 1 ? "year" : "years"}
+                  </option>
+                ))}
+                <option value="10+">15+ years</option>
               </select>
             </div>
           </div>
@@ -209,15 +216,22 @@ const Jobpost = () => {
             <label className="block text-sm font-semibold text-gray-700 mb-1">
               Job Description
             </label>
-            <textarea
-              name="description"
-              placeholder="Describe the role, responsibilities..."
-              value={formData.description}
-              onChange={handleChange}
-              rows="4"
-              className="w-full border rounded-md p-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            />
+           
+            <RichTextEditor
+                value={formData.description}
+                onChange={(content) =>
+                 setFormData({ ...formData, description: content })
+            }
+/>
+
           </div>
+          {/* skills */}
+          <div >
+            <p className="text-sm font-semibold text-gray-700 mb-1">Skills Required</p>
+            <SkillsInput2 formData={formData} setFormData={setFormData}></SkillsInput2>
+
+          </div>
+          
 
           {/* Requirements */}
           <div>

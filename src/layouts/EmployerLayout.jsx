@@ -5,13 +5,19 @@ import { Outlet } from 'react-router-dom'
 
 const EmployerLayout = () => {
   return (
-    <div>
+    <div className='w-screen max-w-screen h-screen overflow-x-hidden'>
         <Topbar></Topbar>
 
-        <div className='flex'>
-           
+        <div className='flex h-screen justify-between'>
+
+           <div className='w-[20%] box-border flex-none'>
             <Sidebar></Sidebar>
-            <main className='grow'>
+
+
+           </div>
+           
+           
+            <main className='overscroll-auto grow ' >
                 <Outlet></Outlet>
 
             </main>
