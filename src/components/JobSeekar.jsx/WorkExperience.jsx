@@ -1,15 +1,13 @@
 import React from "react";
 import { Briefcase } from "lucide-react";
-import { TbBriefcaseFilled } from 'react-icons/tb';
+import { TbBriefcaseFilled } from "react-icons/tb";
 
 export function WorkExperience({ experiences = [], setIsAddExpOpen }) {
   const hasExperience = experiences.length > 0;
 
-  function onAdd(){
-    setIsAddExpOpen(true)
-    
+  function onAdd() {
+    setIsAddExpOpen(true);
   }
-  
 
   return (
     <div className="bg-white rounded-2xl p-6 shadow-sm">
@@ -31,8 +29,10 @@ export function WorkExperience({ experiences = [], setIsAddExpOpen }) {
       {!hasExperience ? (
         <div className="text-center py-10 text-slate-500">
           <div className="flex justify-center mb-3">
-           
-            <TbBriefcaseFilled size={40} className="text-orange-500"></TbBriefcaseFilled>
+            <TbBriefcaseFilled
+              size={40}
+              className="text-orange-500"
+            ></TbBriefcaseFilled>
           </div>
           <p className="font-semibold text-slate-800">
             No work experience added yet.
@@ -56,14 +56,19 @@ export function WorkExperience({ experiences = [], setIsAddExpOpen }) {
             >
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-xl">{idx % 2 === 0 ? "💼" : "💡"}</span>
-                <h4 className="font-semibold text-slate-800">{exp.role}</h4>
+                <h4 className="font-semibold text-slate-800">
+                  {exp.designation}
+                </h4>
               </div>
-              <p className="text-sm text-slate-600 mb-2">@{exp.company}</p>
+              <p className="text-sm text-slate-600 mb-2">@{exp.companyName}</p>
 
               <div className="flex flex-wrap gap-2 mb-2">
-                {exp.duration && (
+                {(exp.workFrom?.month || exp.workTill?.month) && (
                   <span className="text-xs font-medium inline-flex items-center gap-1 bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600">
-                    ⏱ {exp.duration}
+                    ⏱ {exp.workFrom?.month}, {exp.workFrom?.year} –{" "}
+                    {exp.currentlyWorking
+                      ? "Present"
+                      : `${exp.workTill?.month}, ${exp.workTill?.year}`}
                   </span>
                 )}
                 {exp.salary && (
@@ -74,7 +79,7 @@ export function WorkExperience({ experiences = [], setIsAddExpOpen }) {
               </div>
 
               <p className="text-sm text-slate-700">
-                <strong>Responsibilities:</strong> {exp.responsibilities}
+                <strong>Responsibilities:</strong> {exp.description}
               </p>
             </div>
           ))}

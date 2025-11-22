@@ -33,8 +33,8 @@ const Register = () => {
   return (
     <>
       <div className="w-full ">
-        <NavPublic></NavPublic>
-      <div className="mt-28 w-[60%] m-auto ">
+        
+      <div className="mt-8 w-[60%] m-auto ">
         {/* title */}
         <div className="text-center">
           <p className="text-3xl font-bold">Employer Registration</p>

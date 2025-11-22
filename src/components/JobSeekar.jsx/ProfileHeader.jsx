@@ -1,18 +1,19 @@
-import React from "react";
-import { MdVerified } from 'react-icons/md';
-export  function ProfileHeader({
+import React, { useState } from "react";
+import { MdVerified } from "react-icons/md";
+import ProfilePhotoModal from "./ProfilePhotoModa";
+export function ProfileHeader({
   name = "Rahul Kumar",
   email = "rahul.kumar@example.com",
   isEmailVerified = true,
   phone = "+91 98765 43210",
   isPhoneVerified = false,
   roleLabel = "Working Professional",
-  profileImage =
-    "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&w=200",
+  profileImage = "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&w=200",
   profileCompletion = 85,
   onVerifyPhone = () => {},
   onUploadResume = () => {},
 }) {
+  const [showPhotoModal, setShowPhotoModal] = useState(false);
   return (
     <div className="bg-white rounded-2xl shadow-sm p-6 flex flex-col gap-4">
       {/* Top row: avatar + details + upload button */}
@@ -20,12 +21,29 @@ export  function ProfileHeader({
         {/* Left: avatar + user info */}
         <div className="flex items-start gap-4">
           {/* Avatar (no green dot) */}
-          <div className="w-20 h-20 rounded-full overflow-hidden border border-slate-200">
+          <div className="w-20 h-20 md:w-30 md:h-30 rounded-full relative border border-slate-200 group cursor-pointer">
             <img
               src={profileImage}
               alt={name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-full"
             />
+
+            {/* Hover Overlay */}
+            <div
+              onClick={() => setShowPhotoModal(true)}
+              className="absolute inset-0 bg-black/50 backdrop-blur-xs 
+                  flex items-center justify-center
+                  opacity-0 group-hover:opacity-100 
+                  transition-opacity duration-300 rounded-full"
+            >
+              <span className="text-white text-sm text-center">
+                Replace your Photo
+              </span>
+            </div>
+            {/* ✅ Popup Modal Only When Clicking overlay */}
+            {showPhotoModal && (
+              <ProfilePhotoModal setShowModal={setShowPhotoModal} />
+            )}
           </div>
 
           {/* Name / contact */}
@@ -69,7 +87,6 @@ export  function ProfileHeader({
         </div>
 
         {/* Right: Upload Resume button */}
-       
       </div>
 
       {/* Profile completion bar */}

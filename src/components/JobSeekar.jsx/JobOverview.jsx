@@ -1,5 +1,5 @@
 // components/JobOverview.jsx
-export default function JobOverview() {
+export default function JobOverview({setIsApplyClicked}) {
     const job={
       id: 1,
       title: "Senior Product Designer",
@@ -11,6 +11,7 @@ export default function JobOverview() {
       match: "Great match",
       logo: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
     }
+
 
   return (
     <div className="bg-white rounded-xl border border-slate-200 p-5 space-y-4">
@@ -47,7 +48,7 @@ export default function JobOverview() {
         )}
       </div>
 
-      <button className="w-full py-2.5 rounded-lg bg-blue-600 text-white font-semibold text-sm hover:bg-blue-500">
+      <button className="w-full py-2.5 rounded-lg bg-blue-600 text-white font-semibold text-sm hover:bg-blue-500" onClick={()=>{setIsApplyClicked(true)}}>
         Apply Now
       </button>
 

@@ -35,10 +35,11 @@ const JobseekarRegister = () => {
         )}
         {IsverifyEmailClicked && (
           <VerifyEmailModal
-            email={form.email}
+            
+            data={form}
             setcurrentStep={setcurrentStep}
             setIsverifyEmailClicked={setIsverifyEmailClicked}
-            password={form.password}
+            
           ></VerifyEmailModal>
         )}
         {currentStep == 2 && <ProfileTypeStep></ProfileTypeStep>}

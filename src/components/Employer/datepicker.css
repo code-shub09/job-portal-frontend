@@ -1,0 +1,31 @@
+
+/* .react-datepicker-time__header {
+  background-color: #2563eb !important; 
+  color: white !important;
+  font-weight: 600 !important;
+  padding: 8px 10px !important;
+  border-bottom: none !important;
+} */
+
+/* ✅ Optional: Style the time box border */
+/* .react-datepicker__time-container {
+  border-left: none !important;
+} */
+
+/* ✅ Optional: style selected time blue */
+/* .react-datepicker__time-list-item--selected {
+  background-color: #2563eb !important;
+  color: white !important;
+} */
+
+/* ✅ Hover on time items */
+/* .react-datepicker__time-list-item:hover {
+  background-color: #dbeafe !important; 
+  border-radius: 4px;
+} */
+
+.force-bottom-popper {
+  transform: translate3d(0px, 50px, 0px) !important; /* ✅ Force below input */
+  left: 0 !important;
+  right: auto !important;
+}

@@ -2,12 +2,31 @@ import axios from "axios";
 import React, { useState } from "react";
 
 export default function CreateAccountForm({
-  onNext = (data) => console.log(data),setIsverifyEmailClicked,
-  form,setForm
-
+  onNext = (data) => console.log(data),
+  setIsverifyEmailClicked,
+  form,
+  setForm,
 }) {
- 
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  // Triggered when user clicks outside the input
+  const handleBlur = async () => {
+    if (!form.email) return; // don't check empty
+
+    try {
+      const email = form.email;
+      const res = await axios.get(`http://localhost:4300/jobseekar/check-email?email=${email}`);
+      if (res.data.exists) {
+        
+        setError("Email already exists");
+      } else {
+        setError("");
+      }
+    } catch (err) {
+      console.error(err);
+      setError("Something went wrong");
+    }
+  };
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -21,15 +40,17 @@ export default function CreateAccountForm({
       return;
     }
     try {
-        console.log('form data ver: ',form);
-      const response=await axios.post("https://job-portal-server-lr93.onrender.com/jobseekar/verify", form, {
-        withCredentials: true,
-        headers: { "Content-Type": "application/json"},
-        
-      });
+      console.log("form data ver: ", form);
+      const response = await axios.post(
+        "http://localhost:4300/jobseekar/verify",
+        form,
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       console.log(response);
       setIsverifyEmailClicked(true);
-
     } catch (error) {
       console.log(error);
     }
@@ -92,6 +113,7 @@ export default function CreateAccountForm({
                 value={form.email}
                 onChange={handleChange}
                 type="email"
+                onBlur={handleBlur}
                 placeholder="Enter your email address"
                 className="w-full border border-slate-200 rounded-lg px-3 pr-10 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
                 required
@@ -100,6 +122,7 @@ export default function CreateAccountForm({
                 @
               </span>
             </div>
+            {error && <p className="text-sm text-red-500 mt-1">{error}</p>}
           </div>
 
           {/* password */}

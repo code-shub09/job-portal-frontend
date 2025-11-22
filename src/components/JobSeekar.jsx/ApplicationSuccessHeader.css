@@ -1,0 +1,57 @@
+/* CONFETTI */
+@keyframes confetti {
+  0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  animation: confetti 3s ease-in-out infinite;
+  border-radius: 50%;
+}
+
+.bg-color-0 { background: #facc15; } /* yellow */
+.bg-color-1 { background: #60a5fa; } /* blue */
+.bg-color-2 { background: #34d399; } /* green */
+.bg-color-3 { background: #f472b6; } /* pink */
+.bg-color-4 { background: #a78bfa; } /* purple */
+.bg-color-5 { background: #f87171; } /* red */
+.bg-color-6 { background: #10b981; } /* teal */
+.bg-color-7 { background: #fb923c; } /* orange */
+
+/* CHECKMARK POP ANIMATION */
+@keyframes checkmark {
+  0% { transform: scale(0) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(180deg); }
+  100% { transform: scale(1) rotate(360deg); }
+}
+
+.checkmark-animate {
+  animation: checkmark 0.6s ease-out forwards;
+}
+
+/* PULSE RING */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.pulse-ring {
+  animation: pulse-ring 1.5s ease-out infinite;
+}
+
+/* FADE UP ON LOAD */
+.fade-up-section {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.7s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

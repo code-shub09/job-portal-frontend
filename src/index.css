@@ -1,8 +1,98 @@
+/* ---------------------------------------------------
+   Tailwind Base Import
+---------------------------------------------------- */
 @import "tailwindcss";
 
+/* ---------------------------------------------------
+   Custom Keyframes & Animations
+---------------------------------------------------- */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-/* index.css */
+@keyframes pulseSlow {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
 
+@keyframes checkPop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.animate-fade-slide { animation: fadeSlideUp 0.6s ease-out forwards; }
+.animate-pulse-slow { animation: pulseSlow 2s ease-in-out infinite; }
+.animate-check-pop { animation: checkPop 0.5s ease-out; }
+
+/* ---------------------------------------------------
+   Timeline Line
+---------------------------------------------------- */
+.timeline {
+  position: relative;
+}
+
+
+
+/* Step container */
+.step {
+  position: relative;
+  left: -4px;
+
+}
+
+/* Dot for each step */
+.step .dot {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  /* border: 1px solid blue; */
+  position: absolute;
+  left: -22px;
+ 
+  top: -4px;
+}
+
+/* Status colors */
+/* .step.completed .dot {
+  background: #21c45a;  
+} */
+
+/* .step.current .dot {
+  background: #3b82f6;  
+} */
+
+/* .step.pending .dot {
+  background: #fff;
+  border: 2px solid #ccc;
+} */
+
+/* ---------------------------------------------------
+   Hover Utilities
+---------------------------------------------------- */
+.job-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.08),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.job-card:hover .job-title {
+  color: #2563EB;
+}
+
+.btn-hover:hover {
+  transform: scale(1.02);
+}
+
+.btn-hover:active {
+  transform: scale(0.98);
+}
+
+/* ---------------------------------------------------
+   Job Description Typography
+---------------------------------------------------- */
 .job-description h1 {
   font-size: 1.75rem; /* text-2xl */
   font-weight: 700;
@@ -12,7 +102,7 @@
 }
 
 .job-description h2 {
-  font-size: 1.5rem; /* text-xl */
+  font-size: 1.5rem;
   font-weight: 600;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
@@ -20,7 +110,7 @@
 }
 
 .job-description h3 {
-  font-size: 1.25rem; /* text-lg */
+  font-size: 1.25rem;
   font-weight: 600;
   margin-top: 0.75rem;
   margin-bottom: 0.5rem;
@@ -42,8 +132,11 @@
   margin-bottom: 0.25rem;
 }
 
+/* ---------------------------------------------------
+   Scrollbar Hide Utility
+---------------------------------------------------- */
 .scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 
 .scrollbar-hide {
@@ -51,20 +144,21 @@
   scrollbar-width: none;     /* Firefox */
 }
 
-.contact-container>div {
+/* ---------------------------------------------------
+   Contact Form Styles
+---------------------------------------------------- */
+.contact-container > div {
   padding: 0.5rem;
-
   border-radius: 4px;
   display: flex;
   flex-direction: column;
 }
 
-/* All input elements inside .contact-container */
-.contact-container input, select {
+.contact-container input,
+.contact-container select {
   padding: 0.5rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
   background-color: rgba(244, 243, 243, 0.911);
   border-radius: 8px;
+  width: 100%;
 }

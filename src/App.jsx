@@ -31,6 +31,17 @@ import JobseekarRegister from "./pages/public/JobseekarRegister";
 import JobseekerPublicLayout from "./layouts/JobseekerPublicLayout";
 import Profile from "./pages/Jobseekar/Profile";
 
+import { ProtectedRoute } from "./context/ProtectedRoute";
+import InterviewScheduler from "./components/Employer/InterviewScheduler";
+import JobDetailsPage1 from "./components/Employer/JobDetailsPage1";
+import InterviewDateManager from "./components/Employer/InterviewDateManager";
+import OnetooneSlotBook from "./pages/Employer/OnetooneSlotBook";
+import AplplySucess1 from "./pages/Jobseekar/AplplySucess1";
+import SingleApplicationDetails from "./pages/Jobseekar/SingleApplicationDetails";
+import AllApplication from "./pages/Employer/AllApplication";
+// import { ProtectedRoute } from "./context/AuthContext";
+
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -38,8 +49,11 @@ function App() {
     <>
       <HashRouter>
         <Routes>
+          <Route path="/public" element={<PublicLayout></PublicLayout>}></Route>
+          <Route path="/all-application" element={<AllApplication></AllApplication>}></Route>
           <Route element={<EmployerLayout></EmployerLayout>}>
-            <Route path="/" element={<Dashboard></Dashboard>}></Route>
+            <Route path="/" element={<JobDetailsPage1></JobDetailsPage1>}></Route>
+            
             <Route path="/post-job" element={<Jobpost></Jobpost>}></Route>
             <Route
               path="/jobs/manage"
@@ -54,19 +68,23 @@ function App() {
               path="/jobs/:jobId"
               element={<SingleJobDetails></SingleJobDetails>}
             ></Route>
+            <Route path="/jobs/schedule-interview" element={<OnetooneSlotBook></OnetooneSlotBook>}></Route>
             <Route path="/packages" element={<SkillsInput></SkillsInput>}>
               {" "}
             </Route>
           </Route>
           <Route path="registerx" element={<Register></Register>}></Route>
           {/* jobseekar */}
+
           <Route element={<JobseekerLayout></JobseekerLayout>}>
             <Route path="/jobseekar" element={<Home></Home>}></Route>
+             <Route path="/jobseekar/application-details" element={<SingleApplicationDetails></SingleApplicationDetails>}></Route>
+            <Route path="/jobseekar/application-success" element={<AplplySucess1></AplplySucess1>}></Route>
             <Route
               path="/jobseekar/job-search"
               element={<JobSearch></JobSearch>}
             ></Route>
-                 <Route
+            <Route
               path="/jobseekar/profile"
               element={<Profile></Profile>}
             ></Route>

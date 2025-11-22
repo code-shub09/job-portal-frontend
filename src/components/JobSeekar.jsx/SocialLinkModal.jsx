@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FiX } from "react-icons/fi";
 import { FaLinkedin, FaGithub, FaGlobe } from "react-icons/fa";
+import axios from "axios";
 
 const icons = {
   linkedin: <FaLinkedin className="text-blue-600" />,
@@ -14,11 +15,11 @@ export default function SocialLinkModal({
   currentLink = "",
   onSave = () => {},
   onClose = () => {},
-   setShowmodal
+  setShowmodal,
 }) {
   const [link, setLink] = useState(currentLink || "");
   const [error, setError] = useState("");
-  function onClose(){
+  function onClose() {
     setShowmodal(false);
   }
 
@@ -31,10 +32,27 @@ export default function SocialLinkModal({
     return pattern.test(url);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!validateUrl(link)) {
       setError("Please enter a valid URL starting with http or https.");
       return;
+    }
+    const data={social,link};
+    // console.log('social -link',data);
+    try {
+       console.log('social -link',data);
+      const res=await axios.post(
+        "http://localhost:4300/jobseekar/profile/add-social-link",
+        data,
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      console.log('res:',res);
+
+    } catch (error) {
+      console.log(error)
     }
     onSave(link);
     onClose();
@@ -43,7 +61,9 @@ export default function SocialLinkModal({
   const platformName =
     social.charAt(0).toUpperCase() + social.slice(1).toLowerCase();
   const title =
-    action === "edit" ? `Edit ${platformName} Link` : `Add ${platformName} Link`;
+    action === "edit"
+      ? `Edit ${platformName} Link`
+      : `Add ${platformName} Link`;
 
   return (
     <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
@@ -54,7 +74,10 @@ export default function SocialLinkModal({
             {icons[social]}
             <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 text-xl">
+          <button
+            onClick={onClose}
+            className="text-slate-400 hover:text-slate-600 text-xl"
+          >
             <FiX />
           </button>
         </div>

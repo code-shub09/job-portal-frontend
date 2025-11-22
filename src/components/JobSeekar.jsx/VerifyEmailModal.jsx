@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
+// import { login } from "../../../../../backend/controller/UserController";
 
 export default function VerifyEmailModal({
-  email = "shubk362@gmail.com",
-  password,
+  data,
   onClose = () => {},
   onVerify = (otp) => console.log("verify", otp),
   onResend = () => console.log("resend"),
@@ -69,9 +69,9 @@ export default function VerifyEmailModal({
 
      try {
         const otpValue = otp.join("")
-        const data={email,otp:otpValue,password:password}
+         data.otp=otpValue;
         console.log('form data ver: ',data);
-      const response=await axios.post("https://job-portal-server-lr93.onrender.com/jobseekar/verifyotp", data, {
+      const response=await axios.post("http://localhost:4300/jobseekar/verifyotp", data, {
         withCredentials: true,
         headers: { "Content-Type": "application/json"},
         
@@ -121,7 +121,7 @@ export default function VerifyEmailModal({
         {/* email pill */}
         <div className="flex items-center gap-2 bg-blue-50 text-blue-600 px-3 py-2 rounded-full text-sm mx-auto w-fit mb-5">
           <span className="text-xs">📧</span>
-          <span>{email}</span>
+          <span>{data.email}</span>
         </div>
 
         {/* otp label */}
