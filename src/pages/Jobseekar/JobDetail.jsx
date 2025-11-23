@@ -11,6 +11,74 @@ import SkillsRequired from "../../components/JobSeekar.jsx/SkillsRequired";
 import AboutCompany from "../../components/JobSeekar.jsx/AboutCompany";
 import ApplyJobModal from "../../components/JobSeekar.jsx/ApplyJobModal";
 import { useProfile } from "../../hooks/useProfile";
+const dummyProfile = {
+  user: "67a01cbd4f2bcd0012a34f11",
+  firstName: "Aarav",
+  lastName: "Mehta",
+
+  profilePic: "https://i.pravatar.cc/150?img=56",
+
+  phoneNo: "9876543210",
+  isPhoneVerified: true,
+
+  about: "Passionate frontend developer eager to build beautiful and fast user experiences.",
+
+  education: {
+    class12th: {
+      boardName: "CBSE",
+      medium: "English",
+      percentage: "89%",
+      passingYear: "2020"
+    },
+    graduation: {
+      courseName: "B.Tech",
+      specialization: "Computer Science",
+      gradeSystem: "cgpa",
+      courseDuration: { startYear: 2020, endYear: 2024 },
+      courseType: "Full",
+      collegeName: "Lovely Professional University"
+    },
+    postgraduation: {
+      courseName: "",
+      specailaisation: "",
+      gradeSystem: "",
+      courseDuration: { startYear: "", endYear: "" },
+      courseType: "",
+      collegeName: ""
+    }
+  },
+
+  WorkExperience: [
+    {
+      companyName: "TechNova Solutions",
+      designation: "Frontend Developer",
+      workFrom: { month: "June", year: 2022 },
+      workTill: { month: "July", year: 2024 },
+      currentlyWorking: false,
+      currentCTC: "6 LPA",
+      description: "Worked on React based dashboards and UI systems."
+    }
+  ],
+
+  socialLinks: {
+    linkedin: "https://linkedin.com/in/aaravmehta",
+    github: "https://github.com/AaravTech",
+    portfolio: "https://aarav.dev"
+  },
+
+  prefferedRoles: ["Frontend Developer", "React Developer"],
+  skills: ["React", "JavaScript", "Tailwind", "CSS", "Git"],
+  prefferedLocation: ["Bangalore", "Remote"],
+
+  resumeFile: {
+    url: "https://example.com/resume.pdf",
+    public_id: "resume_aarav",
+    fileName: "Aarav_Mehta_Resume.pdf",
+    fileSize: 145678,
+    uploadedAt: "2024-11-04T10:00:00"
+  }
+};
+
 const JobDetail = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
@@ -107,6 +175,7 @@ const JobDetail = () => {
                 setIsApplyClicked={setIsApplyClicked}
                 resumePdf={resumeList}
                 job={Job}
+                profile={dummyProfile}
               ></ApplyJobModal>
             </div>
           )}
