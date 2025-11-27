@@ -17,7 +17,7 @@ export default function JobSearchBar() {
 
     console.log("Searching for:", jobTitle, location);
     try {
-        const response=await axios.post('https://job-portal-server-lr93.onrender.com/employer/job-search',data,{withCredentials:true,headers:{"Content-Type":'application/json'}});
+        const response=await axios.post('http://localhost:4300/employer/job-search',data,{withCredentials:true,headers:{"Content-Type":'application/json'}});
         console.log(response);
         
     } catch (error) {

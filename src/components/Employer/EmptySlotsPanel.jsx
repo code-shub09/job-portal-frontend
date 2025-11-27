@@ -1,5 +1,3 @@
-
-
 // import React, { useState } from "react";
 // import { CalendarPlus } from "lucide-react";
 // import SlotCard from "./SlotCard";
@@ -11,15 +9,13 @@
 //   dates,
 //   dateId,
 // }) {
-  
+
 //    const dateIndex = dates.findIndex((d) => d.id === dateId);
- 
 
 //   const [slots, setSlots] = useState([]);
- 
 
 //   function changeSlots(slotNo, field, value) {
-  
+
 //     setSlots((prev) =>
 //       prev.map((slot, index) =>
 //         index + 1 === slotNo ? { ...slot, [field]: field === "capacity" ? Number(value) || 0 : value } : slot
@@ -39,10 +35,7 @@
 
 //   }
 
-
 //   const updateSlots = (newSlots,capacity) => {
-
-   
 
 //     const updated = [...dates];
 //     updated[dateIndex] = { ...updated[dateIndex], slots: newSlots ,totalCapacity:capacity};
@@ -123,6 +116,7 @@ export default function EmptySlotsPanel({
   dateLabel = "November 18, 2025",
   setDates,
   dates,
+  capcityHandler,
   dateId,
 }) {
   const dateIndex = dates.findIndex((d) => d.id === dateId);
@@ -152,13 +146,13 @@ export default function EmptySlotsPanel({
       index + 1 === slotNo
         ? {
             ...slot,
-            [field]:
-              field === "capacity" ? Number(value) || 0 : value, // ✅ convert string "300" → 300
+            [field]: field === "capacity" ? Number(value) || 0 : value, // ✅ convert string "300" → 300
           }
         : slot
     );
 
     updateSlots(newSlots);
+   
   };
 
   // ✅ Adds a new empty slot

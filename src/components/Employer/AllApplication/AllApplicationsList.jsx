@@ -122,44 +122,6 @@ import ApplicantCard2 from "./ApplicantCard2";
 
 // Dummy Data
 // Dummy Data (Updated for ApplicantCard)
-const applicants = [
-  {
-    id: 1,
-    name: "Priya Sharma",
-    avatar: "https://i.pravatar.cc/150?img=12",
-    isFresher: false,
-     currentTitle: "Senior Frontend Developer",
-    location: "Mumbai, India",
-    experienceYears: 7,
-    currentCTC: 18,
-    expectedCTC: 25,
-    noticePeriod: 60,
-    skills: ["Figma", "Adobe XD", "User Research", "Prototyping", "Sketch"],
-    summary: "Award-winning designer • Led 15+ product launches",
-    status: "shortlisted",
-    bookmarked: false,
-  },
-  {
-    id: 2,
-    name: "Arjun Patel",
-    avatar: "https://i.pravatar.cc/150?img=33",
-    isFresher: true,
-    location: "Pune, India",
-    education: {
-        collageName:'Amity, Noida',
-        courseName:"B.Tech",
-        marksType:"CGPA",
-        marks:"8.8/10",
-        graduationYear:'2024'
-    },
-    projects: 3,
-    internships: "2 months",
-    skills: ["React", "CSS", "HTML", "JavaScript", "Python", "Git"],
-    summary: "Self-taught React developer • Built 5 portfolio apps",
-    status: "viewed",
-    bookmarked: true,
-  },
-];
 
 // Status Badge Styling
 const statusMap = {
@@ -168,7 +130,8 @@ const statusMap = {
   viewed: "bg-purple-100 text-purple-700",
 };
 
-export default function AllApplicationsList() {
+export default function AllApplicationsList({applicationList,jobId}) {
+    console.log('job:iifg all-a',jobId)
   return (
     <div className="w-full bg-white rounded-xl shadow py-6">
       {/* Header */}
@@ -183,10 +146,11 @@ export default function AllApplicationsList() {
 
       {/* Applications List */}
       <div className="flex flex-col overflow-hidden">
-        {applicants.map((app, index) => (
-          <ApplicantCard2 key={app.id} applicant={app}></ApplicantCard2>
+        {applicationList.map((app, index) => (
+          <ApplicantCard2 key={app.id} applicantX={app} jobId={jobId}></ApplicantCard2>
         ))}
       </div>
     </div>
   );
 }
+

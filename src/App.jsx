@@ -39,6 +39,8 @@ import OnetooneSlotBook from "./pages/Employer/OnetooneSlotBook";
 import AplplySucess1 from "./pages/Jobseekar/AplplySucess1";
 import SingleApplicationDetails from "./pages/Jobseekar/SingleApplicationDetails";
 import AllApplication from "./pages/Employer/AllApplication";
+import AllJobPosts from "./components/Employer/AllJobPosts";
+import AllApplications from "./pages/Jobseekar/AllApplications";
 // import { ProtectedRoute } from "./context/AuthContext";
 
 
@@ -50,22 +52,22 @@ function App() {
       <HashRouter>
         <Routes>
           <Route path="/public" element={<PublicLayout></PublicLayout>}></Route>
-          <Route path="/all-application" element={<AllApplication></AllApplication>}></Route>
+          <Route path="/job/all-application/:jobId" element={<AllApplication></AllApplication>}></Route>
+       
+         
           <Route element={<EmployerLayout></EmployerLayout>}>
-            <Route path="/" element={<JobDetailsPage1></JobDetailsPage1>}></Route>
-            
+             <Route path="/job/all-application/:jobId" element={<AllApplication></AllApplication>}></Route>
+              <Route path="/jobs/:jobId" element={<SingleJobDetails></SingleJobDetails>}></Route>
             <Route path="/post-job" element={<Jobpost></Jobpost>}></Route>
+            <Route path="/all-jobpost" element={<AllJobPosts></AllJobPosts>}></Route>
             <Route
               path="/jobs/manage"
               element={<ManageJobs></ManageJobs>}
             ></Route>
-            <Route
-              path="/jobs/details"
-              element={<JobDetails></JobDetails>}
-            ></Route>
+           
             <Route path="/jobs/edit/:jobId" element={<EditPage></EditPage>} />
             <Route
-              path="/jobs/:jobId"
+              path="/jobs/details/:jobId"
               element={<SingleJobDetails></SingleJobDetails>}
             ></Route>
             <Route path="/jobs/schedule-interview" element={<OnetooneSlotBook></OnetooneSlotBook>}></Route>
@@ -78,8 +80,9 @@ function App() {
 
           <Route element={<JobseekerLayout></JobseekerLayout>}>
             <Route path="/jobseekar" element={<Home></Home>}></Route>
-             <Route path="/jobseekar/application-details" element={<SingleApplicationDetails></SingleApplicationDetails>}></Route>
+             <Route path='/jobseekar/applications-list/application/:appId'  element={<SingleApplicationDetails></SingleApplicationDetails>}></Route>
             <Route path="/jobseekar/application-success" element={<AplplySucess1></AplplySucess1>}></Route>
+             <Route path="/jobseekar/applications-list" element={<AllApplications></AllApplications>}></Route>
             <Route
               path="/jobseekar/job-search"
               element={<JobSearch></JobSearch>}

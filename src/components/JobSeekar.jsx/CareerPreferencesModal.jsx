@@ -3,16 +3,13 @@ import React, { useState } from "react";
 import { FiX } from "react-icons/fi";
 import { AiOutlinePlus, AiOutlineDelete } from "react-icons/ai";
 import ModalHeader from "./ModalHeader";
+import { useSaveCareerPreferences } from "../../hooks/useSaveCareerPreferences";
+import { FaChampagneGlasses } from "react-icons/fa6";
 
-export default function CareerPreferencesModal({ onClose, onSave, initialData = {} }) {
-  const [formData, setFormData] = useState({
-    roles: initialData.roles || [""],
-    location: initialData.location || "",
-    minctc: initialData.minctc || "",
-    maxctc:initialData.maxctc || "",
-    noticePeriod: initialData.noticePeriod || "",
-  });
+export default function CareerPreferencesModal({ onClose ,formData, setFormData}) {
 
+  // console.log('cra:',formData);
+  const {mutate}=useSaveCareerPreferences();
   // Handle changes in roles
   const handleRoleChange = (index, value) => {
     const updatedRoles = [...formData.roles];
@@ -38,20 +35,25 @@ export default function CareerPreferencesModal({ onClose, onSave, initialData = 
   // Handle other field changes
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name,value)
     setFormData({ ...formData, [name]: value });
   };
 
   // Validate and submit
   const handleSubmit = () => {
-    const { roles, location, ctc, noticePeriod } = formData;
+    const { roles, location, minctc ,maxctc} = formData;
     const filteredRoles = roles.filter((r) => r.trim() !== "");
 
-    if (filteredRoles.length === 0 || !location || !ctc || !noticePeriod) {
+    if (filteredRoles.length === 0 || !location || !minctc || !maxctc) {
+      console.log(location,filteredRoles.length === 0,minctc,maxctc)
       alert("Please fill all fields before saving.");
       return;
     }
+    console.log('Carrier preference modal');
+    mutate(formData);
 
-    onSave({ ...formData, roles: filteredRoles });
+
+    // onSave({ ...formData, roles: filteredRoles });
     onClose();
   };
 

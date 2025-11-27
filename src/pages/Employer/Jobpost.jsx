@@ -36,7 +36,7 @@ const Jobpost = () => {
 
     try {
       const response = await axios.post(
-        'https://job-portal-server-lr93.onrender.com/post-job',
+        'http://localhost:4300/employer/post-job',
         formData,
         { withCredentials:true,headers:{"Content-Type":"application/json"} }
       );

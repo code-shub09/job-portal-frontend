@@ -148,7 +148,7 @@ const JobDetail = () => {
               <JobDetails job={Job}></JobDetails>
               <SkillsRequired skills={Job.skillsRequired}></SkillsRequired>
               <AboutCompany
-                companyDescription={Job.postedBy.companyDescription}
+                companyDescription={Job.postedBy.description}
               ></AboutCompany>
             </div>
             <div className="w-[25%]">

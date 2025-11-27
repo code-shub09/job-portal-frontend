@@ -32,7 +32,11 @@ export default function Login({ activeRole, setActiveRole }) {
       );
 
       console.log(response);
-      navigate("/dashboard");
+      if (activeRole === "jobseeker") {
+        navigate("/jobseekar");
+      } else {
+        navigate("/all-jobpost");
+      }
     } catch (error) {
       console.log(error);
 
@@ -44,17 +48,6 @@ export default function Login({ activeRole, setActiveRole }) {
 
       const msg = error.response.data.message;
       setErrorMsg(msg);
-
-      // OPTIONAL: Auto-switch role based on backend message
-      // if (msg.includes("registered as")) {
-      //   const correctRole = msg.split("'")[1]; // extract role
-
-      //   if (correctRole === "jobseeker") {
-      //     setActiveRole("Job Seeker");
-      //   } else if (correctRole === "employer") {
-      //     setActiveRole("Employer");
-      //   }
-      // }
     }
   }
 

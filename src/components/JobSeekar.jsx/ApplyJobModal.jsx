@@ -601,7 +601,7 @@ export default function ApplyJobModal({
 
             {/* Fresher → Education Form */}
             {isFresher && (
-              <div className="border rounded-lg p-4 bg-gray-50 space-y-3">
+              <div className="rounded-lg p-4 bg-gray-50 space-y-3">
                 <h4 className="font-medium">Education Details</h4>
 
                 <input
@@ -614,7 +614,7 @@ export default function ApplyJobModal({
                       courseName: e.target.value,
                     })
                   }
-                  className="w-full border rounded-lg p-3"
+                  className="w-full border border-gray-300 rounded-lg p-3"
                 />
 
                 <input
@@ -627,7 +627,7 @@ export default function ApplyJobModal({
                       specialization: e.target.value,
                     })
                   }
-                  className="w-full border rounded-lg p-3"
+                  className="w-full border border-gray-300 rounded-lg p-3"
                 />
 
                 <input
@@ -640,7 +640,7 @@ export default function ApplyJobModal({
                       collegeName: e.target.value,
                     })
                   }
-                  className="w-full border rounded-lg p-3"
+                  className="w-full border border-gray-300 rounded-lg p-3"
                 />
 
                 <input
@@ -653,7 +653,7 @@ export default function ApplyJobModal({
                       graduationYear: e.target.value,
                     })
                   }
-                  className="w-full border rounded-lg p-3"
+                  className="w-full border border-gray-300 rounded-lg p-3"
                 />
               </div>
             )}

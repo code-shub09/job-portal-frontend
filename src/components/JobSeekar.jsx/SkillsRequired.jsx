@@ -5,7 +5,7 @@ export default function SkillsRequired({ skills = [] }) {
 //   if (!skills.length) return null;
 
   return (
-    <div className="bg-white border border-slate-200 rounded-xl p-4">
+    <div className="bg-white border border-slate-200 rounded-xl p-4 my-8">
       <h3 className="text-base font-semibold text-slate-900 mb-3">
         Skills Required
       </h3>

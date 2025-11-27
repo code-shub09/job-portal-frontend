@@ -2,7 +2,10 @@ import React from "react";
 import { Calendar, CheckCircle, XCircle, Users, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-export default function ScheduleInterviewModal2({handleSchInterview}) {
+export default function ScheduleInterviewModal2({handleSchInterview,shortlistedApplications}) {
+    console.log('seh -modal',shortlistedApplications);
+     const avatarList = shortlistedApplications.slice(0, 4);
+    const extraCount = shortlistedApplications.length - 4;
     const navigate=useNavigate();
     function handleContinueSched(){
         navigate('/jobs/schedule-interview');
@@ -20,7 +23,7 @@ export default function ScheduleInterviewModal2({handleSchInterview}) {
               </h2>
             </div>
             <p className="text-sm text-gray-500 mt-1">
-              You currently have <span className="font-medium text-gray-700">10 shortlisted candidates</span> for this position.
+              You currently have <span className="font-medium text-gray-700">{shortlistedApplications.length} shortlisted candidates</span> for this position.
               Would you like to review your shortlist before scheduling interviews, or continue with them?
             </p>
           </div>
@@ -52,7 +55,7 @@ export default function ScheduleInterviewModal2({handleSchInterview}) {
                 <span className="text-gray-700 text-sm">Shortlisted</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-semibold text-gray-900">10</span>
+                <span className="font-semibold text-gray-900">{shortlistedApplications.length}</span>
                 <span className="text-xs text-blue-600 bg-blue-100 px-2 py-0.5 rounded-full">
                   Active
                 </span>
@@ -89,16 +92,16 @@ export default function ScheduleInterviewModal2({handleSchInterview}) {
 
         {/* Avatars */}
         <div className="flex items-center gap-2 mt-5">
-          {[1, 2, 3, 4].map((i) => (
+          {avatarList.map((i) => (
             <img
               key={i}
-              src={`https://i.pravatar.cc/40?img=${i + 10}`}
+              src={i.applicant.profilePic}
               alt="Candidate"
               className="w-8 h-8 rounded-full border border-white shadow-sm"
             />
           ))}
           <div className="w-8 h-8 flex items-center justify-center text-sm bg-gray-100 text-gray-600 rounded-full border">
-            +6
+            {extraCount}
           </div>
           <p className="text-sm text-gray-500 ml-1">
             Shortlisted candidates ready for interview

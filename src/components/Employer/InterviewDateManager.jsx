@@ -308,15 +308,31 @@
 //   );
 // }
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Calendar } from "lucide-react";
 import StyledReactDatePicker from "./StyledReactDatePicker";
 import { DateCard } from "./DateCard";
 import EmptySlotsPanel from "./EmptySlotsPanel";
 import SlideFromRight from "./SlideFromRight";
 
-export default function InterviewDateManager() {
-  const [dates, setDates] = useState([]);
+export default function InterviewDateManager({ setTotalSlotCapicity ,dates, setDates}) {
+  
+  useEffect(() => {
+    capcityHandler();
+  }, [dates]);
+
+  function capcityHandler() {
+    let totalCapacityX = 0;
+
+    dates.map((item, index) => {
+      totalCapacityX += item.totalCapacity;
+      console.log("item:", totalCapacityX);
+    });
+    setTotalSlotCapicity(totalCapacityX);
+  }
+  console.log("dates:slot", dates);
+
+  console.log("interview date mana");
 
   const [showPicker, setShowPicker] = useState(false);
   const [activeDate, setActiveDate] = useState(null);
@@ -344,8 +360,11 @@ export default function InterviewDateManager() {
             showPicker={showPicker}
             setShowPicker={setShowPicker}
             onDateSelected={(d) => {
-              console.log(dates)
-              setDates([...dates, { id: Date.now(), date: d ,slots:[],totalCapacity:0 }]);
+              console.log(dates);
+              setDates([
+                ...dates,
+                { id: Date.now(), date: d, slots: [], totalCapacity: 0 },
+              ]);
               setShowPicker(false);
             }}
           />
@@ -379,7 +398,8 @@ export default function InterviewDateManager() {
                 })}
                 onAddSlot={() => addSlot(d.id)}
                 setDates={setDates}
-                 dateId={d.id}
+                dateId={d.id}
+                capcityHandler={capcityHandler}
                 dates={dates}
               />
             </div>
