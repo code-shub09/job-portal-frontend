@@ -23,7 +23,7 @@ export default function Login({ activeRole, setActiveRole }) {
     try {
       console.log(formData);
       const response = await axios.post(
-        "http://localhost:4300/auth/login",
+        "https://job-portal-server-lr93.onrender.com/auth/login",
         formData,
         {
           withCredentials: true,

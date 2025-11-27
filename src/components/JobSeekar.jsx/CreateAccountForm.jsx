@@ -15,7 +15,7 @@ export default function CreateAccountForm({
 
     try {
       const email = form.email;
-      const res = await axios.get(`http://localhost:4300/jobseekar/check-email?email=${email}`);
+      const res = await axios.get(`https://job-portal-server-lr93.onrender.com/jobseekar/check-email?email=${email}`);
       if (res.data.exists) {
         
         setError("Email already exists");

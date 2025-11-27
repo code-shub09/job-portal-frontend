@@ -9,6 +9,7 @@ export default function EmployerNavbar() {
     { label: "Create Job", path: "/post-job" },
    
   ];
+  
 
   return (
     <nav className="w-full bg-white rounded-xl shadow-sm border border-gray-200 py-3 px-5 flex items-center justify-between">

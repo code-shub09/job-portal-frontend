@@ -71,7 +71,7 @@ export default function VerifyEmailModal({
         const otpValue = otp.join("")
          data.otp=otpValue;
         console.log('form data ver: ',data);
-      const response=await axios.post("http://localhost:4300/jobseekar/verifyotp", data, {
+      const response=await axios.post("https://job-portal-server-lr93.onrender.com/jobseekar/verifyotp", data, {
         withCredentials: true,
         headers: { "Content-Type": "application/json"},
         

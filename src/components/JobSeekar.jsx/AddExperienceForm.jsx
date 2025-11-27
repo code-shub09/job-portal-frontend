@@ -31,7 +31,7 @@ export default function AddExperienceForm({ onSave = () => {}, onCancel = () => 
       currentlyWorking: isChecked,
     };
 
-     const response=await axios.post("http://localhost:4300/jobseekar/profile/addexperience", payload, {
+     const response=await axios.post("https://job-portal-server-lr93.onrender.com/jobseekar/profile/addexperience", payload, {
         withCredentials: true,
         headers: { "Content-Type": "application/json"},
         

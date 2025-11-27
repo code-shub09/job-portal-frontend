@@ -107,7 +107,7 @@ const JobDetail = () => {
     async function FetchJobDetails() {
       try {
         const response = await axios.get(
-          `http://localhost:4300/jobseekar/job-search/${id}`,
+          `https://job-portal-server-lr93.onrender.com/jobseekar/job-search/${id}`,
           { headers: { "Content-Type": "application/json" } }
         );
         console.log("job::---", response.data.job);

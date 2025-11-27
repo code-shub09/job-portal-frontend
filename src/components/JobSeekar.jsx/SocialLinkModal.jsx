@@ -42,7 +42,7 @@ export default function SocialLinkModal({
     try {
        console.log('social -link',data);
       const res=await axios.post(
-        "http://localhost:4300/jobseekar/profile/add-social-link",
+        "https://job-portal-server-lr93.onrender.com/jobseekar/profile/add-social-link",
         data,
         {
           withCredentials: true,
