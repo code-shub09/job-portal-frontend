@@ -3,27 +3,14 @@ import React, { useState } from "react";
 import { FiSearch, FiMapPin } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 
-export default function JobSearchBar() {
-  const [jobTitle, setJobTitle] = useState("");
-  const [location, setLocation] = useState("");
+export default function JobSearchBar({jobTitle,setJobTitle,location,setLocation}) {
+   console.log(jobTitle)
+  
   const navigate=useNavigate();
-
-
-
   const handleSubmit = async(e) => {
     e.preventDefault();
+    console.log(jobTitle,location);
     navigate(`/jobseekar/job-search?title=${jobTitle}&location=${location}`);
-    let data={jobTitle:jobTitle,location:location}
-
-    console.log("Searching for:", jobTitle, location);
-    try {
-        const response=await axios.post('http://localhost:4300/employer/job-search',data,{withCredentials:true,headers:{"Content-Type":'application/json'}});
-        console.log(response);
-        
-    } catch (error) {
-        console.log(error);
-        
-    }
   };
 
   return (
