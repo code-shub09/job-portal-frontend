@@ -62,28 +62,21 @@
 
 //            <div className='w-[65%]'> <ApplicationTimeline></ApplicationTimeline></div>
 //            <div className='w-[30%] flex flex-col gap-6'>
-//              <ApplicationSubmissionDetails></ApplicationSubmissionDetails> 
+//              <ApplicationSubmissionDetails></ApplicationSubmissionDetails>
 //              <ApplicationPersonalInfo></ApplicationPersonalInfo>
 //            </div>
 
-           
-           
 //         </div>
 //        <RecommendedJobsSection jobs={jobsData}></RecommendedJobsSection>
 
-        
-      
 //     </div>
 //   )
 // }
 
 // export default SingleApplicationDetails
 
-
-
 // import React from 'react';
 // import { useParams } from 'react-router-dom';
-
 
 // import ApplicationTimeline from '../../components/JobSeekar.jsx/SingleApplication/ApplicationTimeline';
 // import ApplicationHeroCard from '../../components/JobSeekar.jsx/SingleApplication/ApplicationHeroCard';
@@ -116,7 +109,7 @@
 //       />
 
 //       <div className="flex justify-between">
-        
+
 //         {/* TIMELINE - using backend stages */}
 //         <div className="w-[65%]">
 //           <ApplicationTimeline timeLine={application.timeline} />
@@ -158,35 +151,44 @@ const SingleApplicationDetails = () => {
 
   if (isLoading) return <p className="p-10">Loading...</p>;
   if (error) return <p>Error loading application</p>;
-  
+
+  console.log("data-single:", data.timeline);
   const app = data;
 
   return (
-    <div className="w-[90%] m-auto flex flex-col gap-6">
+    <>
+      {isLoading ? (
+        <div>loading ...</div>
+      ) : (
+        <div className="w-[90%] m-auto flex flex-col gap-6">
+          <ApplicationHeroCard
+            title={app.job.title}
+            company={app.job.companyName}
+            location={app.job.location}
+            salary={app.job.salaryRange}
+            type={app.job.type}
+            appliedDate={new Date(app.appliedAt).toDateString()}
+            logo={logo1}
+          />
 
-      <ApplicationHeroCard
-        title={app.job.title}
-        company={app.job.companyName}
-        location={app.job.location}
-        salary={app.job.salaryRange}
-        type={app.job.type}
-        appliedDate={new Date(app.appliedAt).toDateString()}
-        logo={logo1}
-      />
+          <div className="flex justify-between">
+            <div className="w-[65%]">
+              <ApplicationTimeline timeline={app.timeline} />
+            </div>
 
-      <div className="flex justify-between">
-        <div className="w-[65%]">
-          <ApplicationTimeline timeLine={app.timeline} />
+            <div className="w-[30%] flex flex-col gap-6">
+              <ApplicationSubmissionDetails
+                resume={app.resume}
+                coverLetter={app.coverLetter}
+              />
+              <ApplicationPersonalInfo info={app.personalInfo} />
+            </div>
+          </div>
+
+          <RecommendedJobsSection jobs={app.recommendedJobs} />
         </div>
-
-        <div className="w-[30%] flex flex-col gap-6">
-          <ApplicationSubmissionDetails resume={app.resume} coverLetter={app.coverLetter} />
-          <ApplicationPersonalInfo info={app.personalInfo} />
-        </div>
-      </div>
-
-      <RecommendedJobsSection jobs={app.recommendedJobs} />
-    </div>
+      )}
+    </>
   );
 };
 
