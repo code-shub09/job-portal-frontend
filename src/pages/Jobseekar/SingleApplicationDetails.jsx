@@ -153,7 +153,7 @@ const SingleApplicationDetails = () => {
   if (isLoading) return <p className="p-10">Loading...</p>;
   if (error) return <p>Error loading application</p>;
 
-  console.log("data-single:", data.timeline);
+  console.log("data-sin-res:", data);
   const app = data;
 
   return (
@@ -186,7 +186,7 @@ const SingleApplicationDetails = () => {
             </div>
           </div>
 
-          <RecommendedJobsSection jobs={app.recommendedJobs} />
+          {/* <RecommendedJobsSection jobs={app.recommendedJobs} /> */}
         </div>
       )}
     </>

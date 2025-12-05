@@ -1,8 +1,19 @@
 import React from "react";
 
+import { GoGraph } from "react-icons/go";
+import { FaTrophy, FaCheck } from "react-icons/fa";
+import { AiFillSchedule } from "react-icons/ai";
+import { TiStarOutline } from "react-icons/ti";
+import { IoEye } from "react-icons/io5";
 
+const ICONS = {
+  check: <FaCheck />,
+  eye: <IoEye />,
+  star: <TiStarOutline />,
+  calendar: <AiFillSchedule />,
+  trophy: <FaTrophy />,
+};
 
-// const stages = [
 //   {
 //     id: 1,
 //     title: "Application Submitted",
@@ -50,11 +61,7 @@ import React from "react";
 // ];
 
 // import { GoGraph } from "react-icons/go";
-// import { FaTrophy } from "react-icons/fa";
-// import { AiFillSchedule } from "react-icons/ai";
-// import { TiStarOutline } from "react-icons/ti";
-// import { IoEye } from "react-icons/io5";
-// import { FaCheck } from "react-icons/fa";
+
 
 // const ICONS = {
 //     check: <FaCheck />,
@@ -146,65 +153,6 @@ import React from "react";
 // }
 
 
-
-
-// export default function ApplicationTimeline({ timeline }) {
-//   return (
-//     <div className="shadow p-6 border rounded-xl">
-//       <h2 className="text-2xl font-bold mb-6">Application Timeline</h2>
-
-//       <div className="border-l-4 border-gray-300 pl-6 space-y-8">
-//         {timeline.map((step, index) => (
-//           <div key={index} className="relative">
-
-//             {/* Dot */}
-//             <div
-//               className={`w-10 h-10 rounded-full flex justify-center items-center absolute -left-6 top-1
-//                 ${step.status === "completed" ? "bg-green-500" :
-//                   step.status === "current" ? "bg-blue-500" :
-//                   "bg-gray-300"}
-//               `}
-//             >
-//               <span className="text-white">{ICONS[step.icon]}</span>
-//             </div>
-
-//             {/* Card */}
-//             <div className="bg-gray-50 p-4 rounded-lg shadow">
-//               <div className="flex justify-between">
-//                 <h3 className="font-bold">{step.title}</h3>
-
-//                 <span className="text-sm text-gray-500">
-//                   {step.date ? new Date(step.date).toLocaleString() : "Pending"}
-//                 </span>
-//               </div>
-
-//               <p className="text-gray-600 text-sm mt-1">
-//                 {step.desc || "No additional info"}
-//               </p>
-//             </div>
-
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
-
-import { GoGraph } from "react-icons/go";
-import { FaTrophy, FaCheck } from "react-icons/fa";
-import { AiFillSchedule } from "react-icons/ai";
-import { TiStarOutline } from "react-icons/ti";
-import { IoEye } from "react-icons/io5";
-
-const ICONS = {
-  check: <FaCheck />,
-  eye: <IoEye />,
-  star: <TiStarOutline />,
-  calendar: <AiFillSchedule />,
-  trophy: <FaTrophy />,
-};
-
 export default function ApplicationTimeline({ timeline }) {
 
   // FIND current stage index
@@ -271,3 +219,49 @@ export default function ApplicationTimeline({ timeline }) {
     </div>
   );
 }
+
+
+
+
+// export default function ApplicationTimeline({ timeline }) {
+//   return (
+//     <div className="shadow p-6 border rounded-xl">
+//       <h2 className="text-2xl font-bold mb-6">Application Timeline</h2>
+
+//       <div className="border-l-4 border-gray-300 pl-6 space-y-8">
+//         {timeline.map((step, index) => (
+//           <div key={index} className="relative">
+
+//             {/* Dot */}
+//             <div
+//               className={`w-10 h-10 rounded-full flex justify-center items-center absolute -left-6 top-1
+//                 ${step.status === "completed" ? "bg-green-500" :
+//                   step.status === "current" ? "bg-blue-500" :
+//                   "bg-gray-300"}
+//               `}
+//             >
+//               <span className="text-white">{ICONS[step.icon]}</span>
+//             </div>
+
+//             {/* Card */}
+//             <div className="bg-gray-50 p-4 rounded-lg shadow">
+//               <div className="flex justify-between">
+//                 <h3 className="font-bold">{step.title}</h3>
+
+//                 <span className="text-sm text-gray-500">
+//                   {step.date ? new Date(step.date).toLocaleString() : "Pending"}
+//                 </span>
+//               </div>
+
+//               <p className="text-gray-600 text-sm mt-1">
+//                 {step.desc || "No additional info"}
+//               </p>
+//             </div>
+
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+

@@ -487,6 +487,8 @@ export default function ResumeSection({ existingResume }) {
     setResume(null);
   }
 
+  console.log('resume-debug:',resume);
+
   const { mutate, isPending } = useUploadResume(updatePath);
 
   // Trigger upload to backend
@@ -542,11 +544,11 @@ export default function ResumeSection({ existingResume }) {
               </div>
 
               <div>
-                <span className="font-semibold text-lg">{resume.fileName}</span>
+                <span className="font-semibold text-lg">{resume.name}</span>
                 <p className="flex items-center">
                   {" "}
                   <FaFile className="text-gray-700"></FaFile>{" "}
-                  {formatFileSize(resume.fileSize)}
+                  {formatFileSize(resume.size)}
                 </p>
               </div>
             </div>
@@ -584,7 +586,7 @@ export default function ResumeSection({ existingResume }) {
                 <FaFilePdf className="w-8 h-8 text-red-600"></FaFilePdf>
               </div>
               <div>
-                <span className="font-semibold text-lg/1">
+                <span className="font-semibold text-lg/1  whitespace-nowrap overflow-hidden text-ellipsis">
                   {uploadedResume.fileName}
                 </span>
 

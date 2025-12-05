@@ -170,14 +170,14 @@ export default function Profile() {
   return (
     <>
       <div className="bg-gray-200">
-        <div className="min-h-screen p-6 w-full md:w-[85%] m-auto flex flex-col gap-6">
+        <div className="min-h-screen p-6 w-full md:w-[80%]  m-auto flex flex-col gap-6">
           <ProfileHeader
             name={Profile.profile.firstName}
             email={Profile.profile.user.email}
             profileImage={Profile.profile.profilePic}
           />
 
-          <div className="flex flex-col md:flex-row gap-6 justify-between">
+          <div className="flex flex-col md:flex-row gap-x-24 justify-between">
             {/* LEFT */}
             <div className="flex flex-col w-full md:w-[65%] gap-4">
               <AboutSection />
@@ -202,7 +202,7 @@ export default function Profile() {
             </div>
 
             {/* RIGHT */}
-            <div className="w-full md:w-[30%] flex flex-col gap-4">
+            <div className="w-full md:w-[30%] flex flex-col gap-4 flex-1">
               <ResumeSection existingResume={Profile.profile.resumeFile} />
               <SocialLinks links={Profile.profile.socialLinks || []} />
               <BoostProfileCard />

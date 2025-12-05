@@ -1,6 +1,7 @@
 import React from "react";
 
-export default function ApplicationSubmissionDetails() {
+export default function ApplicationSubmissionDetails({resume,coverLetter}) {
+  console.log('resume---',resume)
   return (
     <div className="bg-white rounded-2xl shadow-md p-6 animate-fade-slide border border-gray-100">
       <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
@@ -11,23 +12,29 @@ export default function ApplicationSubmissionDetails() {
         <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-semibold text-gray-700">Resume</span>
-            <button className="text-blue-600 hover:text-blue-700 text-sm font-medium transition-colors">
-              <i className="fas fa-download mr-1"></i> Download
-            </button>
+            <a href={resume.url}>
+              <button className="text-blue-600 cursor-pointer hover:text-blue-700 text-sm font-medium transition-colors">
+                <i className="fas fa-download mr-1"></i> Download
+              </button>
+            </a>
           </div>
           <div className="flex items-center gap-3">
             <i className="fas fa-file-pdf text-red-500 text-2xl"></i>
             <div>
-              <p className="text-sm font-medium text-gray-900">John_Doe_Resume.pdf</p>
-              <p className="text-xs text-gray-500">2.4 MB</p>
+              <p className="text-sm font-medium text-gray-900">
+                {resume.fileName}
+              </p>
+              <p className="text-xs text-gray-500"> {resume.fileSize/1024}{" "}mb</p>
             </div>
           </div>
         </div>
 
         <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
-          <span className="text-sm font-semibold text-gray-700 block mb-2">Cover Letter</span>
+          <span className="text-sm font-semibold text-gray-700 block mb-2">
+            Cover Letter
+          </span>
           <div className="bg-white rounded-lg p-3 text-xs text-gray-700 max-h-32 overflow-y-auto border border-gray-200">
-            I am excited to apply for the Senior Product Designer position at TechCorp Solutions. With over 6 years of experience... (truncated)
+           {coverLetter} 
           </div>
         </div>
       </div>
