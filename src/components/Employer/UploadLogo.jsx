@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BsUpload } from "react-icons/bs";
 
-const UploadLogo = () => {
+const UploadLogo = ({setLogoFile}) => {
   const [logo, setLogo] = useState(null);
   const [imgName, setImgName] = useState("");
 
@@ -10,26 +10,35 @@ const UploadLogo = () => {
     const file = e.target.files[0];
     console.log(file);
     if (file) {
+      setLogoFile(file);
       setLogo(URL.createObjectURL(file));
       console.log(file.name, logo);
       setImgName(file.name);
     }
   }
+  console.log("logo:", logo);
 
   return (
     <div>
-        <p>Company Logo  <span className="text-xs text-gray-400"> &#40; Recommended  &#41;</span></p>
+      <p>
+        Company Logo{" "}
+        <span className="text-xs text-gray-400"> &#40; Recommended &#41;</span>
+      </p>
       <div>
         {/* <div className="border border-blue-500 bg-blue-300"> </div> */}
         {logo && (
-          <div className="border-[2px] border-dashed border-red-400 max-w-fit">
-            <img
-              src={logo}
-              alt="com[any logo"
-              className="w-42 object-contain"
-            />
+          <>
+            <div className="border-[2px] border-dashed border-red-400 max-w-fit">
+              <img
+                src={logo}
+                alt="com[any logo"
+                className="w-42 object-contain"
+              />
+              
+            </div>
+
             <p>{imgName}</p>
-          </div>
+          </>
         )}
         <label
           htmlFor="logo-upload"

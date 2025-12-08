@@ -17,7 +17,6 @@ const Register = () => {
   const [FormData, setFormData] = useState({
     companyName: "",
     companyDescription: "",
-    companyLogo: "",
     website: "",
     contactName: "",
     industry: "",
@@ -30,11 +29,27 @@ const Register = () => {
     confirmPassword: "",
   });
 
+  const [logoFile, setLogoFile] = useState(null);
+
+  // const [companyName, setCompanyName] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [logoFile, setLogoFile] = useState(null);
+  // const [industry, setIndustry] = useState("");
+  // const [website, setWebsite] = useState("");
+  // const [contactName,setContactName]=useState("");
+  // const [designation,setDesignation] =useState("");
+  // const [email,setEmail]=useState("");
+  // const [phone,setPhone]=useState("");
+  // const [address, setAddress] = useState("");
+  // const [city, setCity] = useState("");
+  // const [password,setPassword]=useState('');
+  // const [confirmPassword,setConfirmPassword] =useState('');
+
   return (
     <>
       <div className="w-full ">
         
-      <div className="mt-8 w-[60%] m-auto ">
+      <div className="mt-8 w-[60%] m-auto  ">
         {/* title */}
         <div className="text-center">
           <p className="text-3xl font-bold">Employer Registration</p>
@@ -42,13 +57,14 @@ const Register = () => {
             Join our team and connect with talented professionals
           </p>
         </div>
-        <div>
-          <Steps
+        <div className="">
+         <div className="w-[60%] m-auto rounded-3xl">
+           <Steps
             stepsList={stepsList}
             StepNum={StepNum}
             setStepNum={setStepNum}
           ></Steps>
-          <div className="mt-6">
+          <div className="mt-8">
             {StepNum == 1 && (
               <ContactDetails
                 FormData={FormData}
@@ -61,16 +77,19 @@ const Register = () => {
                 FormData={FormData}
                 setFormData={setFormData}
                 setStepNum={setStepNum}
+                setLogoFile={setLogoFile}
               ></CompanyDetails>
             )}
             {StepNum == 3 && (
               <AccountSetup
-                FormData={FormData}
+                FormDataDetails={FormData}
                 setFormData={setFormData}
                 setStepNum={setStepNum}
+                logoFile={logoFile}
               ></AccountSetup>
             )}
           </div>
+         </div>
         </div>
       </div>
 

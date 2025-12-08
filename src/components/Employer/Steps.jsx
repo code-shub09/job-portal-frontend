@@ -10,7 +10,7 @@ const Steps = ({ stepsList, StepNum, setStepNum }) => {
   }
 
   return (
-    <div className="flex mt-6 justify-center">
+    <div className="flex mt-6 justify-between">
       {stepsList.map((step, index) => {
         let stepCss='w-12 h-12 border cursor-pointer rounded-full m-auto flex items-center justify-center '
         // completed

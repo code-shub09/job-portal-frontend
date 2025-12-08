@@ -40,7 +40,7 @@ const ContactDetails = ({FormData,setFormData,setStepNum}) => {
     }
   }
   return (
-    <div className="flex w-[80%] rounded-lg m-auto shadow-sm flex-col gap-2 border contact-container border-gray-200">
+    <div className="flex w-full rounded-lg m-auto shadow-sm flex-col gap-2 border contact-container border-gray-200">
       <div>
         <p className="font-semibold text-xl">Contact Details</p>
         <p>Provide your contact information</p>

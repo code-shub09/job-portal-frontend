@@ -4,11 +4,11 @@ import apiE from "./axiosEmpoyer";
 
 
 
-export  async function getAllJobPost(){
-    console.log('fetching jobs')
-    const res= await apiE.get('/all-jobposts')
-    console.log('res',res.data.jobPosts);
-    return res.data.jobPosts;
+export async function getAllJobPost() {
+  console.log('fetching jobs')
+  const res = await apiE.get('/all-jobposts')
+  console.log('res', res.data.jobPosts);
+  return res.data.jobPosts;
 }
 
 
@@ -27,16 +27,29 @@ export async function getSingleJob(id) {
 }
 
 export async function getAllApplicaion(jobId) {
-    console.log('get function')
+  console.log('get function')
   const res = await apiE.get(`/job/all-application/${jobId}`);
-  console.log('api axios,',res.data.applications)
+  console.log('api axios,', res.data.applications)
   return res.data.applications;
 }
 
 
-export async function shortlistApplication({applicationId, note, notify} ) {
-    console.log('get function',applicationId);
-  const res = await apiE.post(`/job/application/shortlist/${applicationId}`,{note,notify});
-  console.log('api axios,',res.data)
+export async function shortlistApplication({ applicationId, note, notify }) {
+  console.log('get function', applicationId);
+  const res = await apiE.post(`/job/application/shortlist/${applicationId}`, { note, notify });
+  console.log('api axios,', res.data)
+  return res.data;
+}
+
+
+
+export async function registorEmployer( payload ) {
+  console.log('reg-emp', payload);
+  const res = await apiE.post('/register/', payload, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    }
+  });
+  console.log('api axios,', res.data)
   return res.data;
 }

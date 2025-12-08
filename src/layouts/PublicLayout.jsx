@@ -24,7 +24,7 @@ const PublicLayout = () => {
 
         {authOption === "signup" && (
           <>
-            {activeRole === "jobSeeker" ? (
+            {activeRole === "jobseeker" ? (
                <JobseekarRegister></JobseekarRegister>
             ) : (
               <Register></Register>

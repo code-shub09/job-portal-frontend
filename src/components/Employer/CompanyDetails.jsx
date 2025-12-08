@@ -20,12 +20,12 @@ const industries = [
   "Other",
 ];
 
-const CompanyDetails = ({ FormData, setFormData, setStepNum }) => {
+const CompanyDetails = ({ FormData, setFormData, setStepNum ,setLogoFile}) => {
   const [errors, setErrors] = useState({});
   function handleChange(e) {
-    console.log("form value:", e.target.value);
+    // console.log("form value:", e.target.value);
     setFormData({ ...FormData, [e.target.name]: e.target.value });
-    console.log("data:", FormData);
+    // console.log("data:", FormData);
   }
 
   function validate() {
@@ -64,7 +64,7 @@ const CompanyDetails = ({ FormData, setFormData, setStepNum }) => {
     }
   }
   return (
-    <div className="flex w-[80%] rounded-lg m-auto shadow-sm flex-col gap-2 border contact-container border-gray-200">
+    <div className="flex w-full rounded-lg m-auto shadow-sm flex-col gap-2 border contact-container border-gray-200">
       {/* tilte */}
       <div>
         <p className="text-lg font-semibold">Company Information</p>
@@ -167,7 +167,7 @@ const CompanyDetails = ({ FormData, setFormData, setStepNum }) => {
         </div>
       </div>
       {/* company logo */}
-      <UploadLogo></UploadLogo>
+      <UploadLogo setLogoFile={setLogoFile}></UploadLogo>
 
       {/* continue button  */}
 
