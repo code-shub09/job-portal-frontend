@@ -42,7 +42,7 @@ export default function CreateAccountForm({
     try {
       console.log("form data ver: ", form);
       const response = await axios.post(
-        "http://localhost:4300/jobseekar/verify",
+        "https://job-portal-server-lr93.onrender.com/jobseekar/verify",
         form,
         {
           withCredentials: true,
